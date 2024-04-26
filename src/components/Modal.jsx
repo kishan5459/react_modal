@@ -1,9 +1,19 @@
 import React from 'react'
 import './Modal.css'
+import { useEffect } from 'react'
 
 export const Modal = ({ closeModal }) => {
+    useEffect(
+        () => {
+            document.body.style.overflow = 'hidden';
+            return () => {
+                document.body.style.overflow = 'auto';
+            }
+        }
+    );
   return (
-    <div className='modalBackground'>
+    // for closing modal by clicking outside of modal
+    <div className='modalBackground' onClick={() => closeModal(false)}>
         <div className='modalContainer'>
             <div className='titleCloseBtn'>
                 <button onClick={() => closeModal(false)}> X </button>
