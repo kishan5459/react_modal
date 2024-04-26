@@ -1,13 +1,17 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { Modal } from './components/Modal'
+import { useState } from 'react'
 
 function App() {
+  const [openModal, setOpenModal] = useState(false)
 
   return (
     <>
-      <p>App</p>
+      <div className="App">
+        <h1>Hey! click on the button to open modal</h1>
+        <button className='openModalBtn' onClick={() => setOpenModal(true)}>Open Modal</button>
+        {openModal && <Modal closeModal={setOpenModal} />}
+      </div>
     </>
   )
 }
